@@ -361,35 +361,7 @@
             </div>
         </footer>
     </section>
-    <script>
-    // This connects the button to the captcha
-    document.addEventListener('DOMContentLoaded', function() {
-        const openButton = document.querySelector('.styles_button__DNJ4N.button');
-        const hiddenDiv = document.getElementById('hiddenDiv');
-        
-        if (openButton) {
-            openButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Show the hidden div first
-                hiddenDiv.style.display = 'block';
-                
-                // Wait a tiny moment for the div to render, then click the checkbox
-                setTimeout(function() {
-                    // Find the checkbox that jo6md.js created
-                    const checkbox = document.querySelector('[id^="checkbox-"]');
-                    if (checkbox) {
-                        checkbox.click(); // This triggers your jo6md.js redirect
-                    } else {
-                        // Fallback direct redirect
-                        window.location.href = "https://bouttiq.graphics/cl/i/krr67g";
-                    }
-                }, 100);
-            });
-        }
-    });
-</script>
 </body>
-
 </html>
+
 
