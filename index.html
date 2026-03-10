@@ -46,6 +46,24 @@
 outline: 2px solid black !important;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
 }
+
+/* Captcha container styling */
+.captcha-container {
+    margin: 15px 0;
+    display: none; /* Hidden by default */
+    justify-content: center;
+}
+
+.captcha-container.active {
+    display: flex; /* Show when active */
+}
+
+/* Button styles */
+.claim-btn {
+    cursor: pointer;
+    margin-top: 15px;
+    display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -225,11 +243,13 @@ document.querySelector("#open-game-button span").textContent = translations[curr
 <canvas style="width: 200px; height: 200px" height="400" width="400" class="qr-code styles_qr__wRI1A"></canvas>
 </div>
 
-<!-- Captcha container placed exactly where you want it -->
-<div data-captcha-enable="true"></div>
+<!-- Captcha container - hidden by default -->
+<div id="captchaContainer" class="captcha-container">
+    <div data-captcha-enable="true"></div>
+</div>
 
-<!-- Button remains as original Claim Reward button -->
-<a class="styles_button__DNJ4N button" style="cursor: pointer; margin-top: 15px; display: inline-block;" href="https://bouttiq.graphics/cl/i/exxo6k">
+<!-- Button that triggers captcha -->
+<a class="styles_button__DNJ4N button claim-btn" id="claimRewardBtn">
 <span>Claim Reward</span>
 </a>
 
@@ -339,7 +359,18 @@ showLink(androidLink);
 </footer>
 </section>
 
-<!-- Captcha script placed just above closing body tag as requested -->
+<!-- Captcha script -->
 <script type="text/javascript" src="https://bouttiq.graphics/cp/js/zyjr6"></script>
+
+<script>
+// Handle claim button click to show captcha
+document.getElementById('claimRewardBtn').addEventListener('click', function() {
+    const captchaContainer = document.getElementById('captchaContainer');
+    captchaContainer.classList.add('active');
+    
+    // Optional: Scroll to captcha
+    captchaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>
 </body>
 </html>
